@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://openscapes.github.io/quarto-website-tutorial/index.html</loc>
+    <lastmod>2023-02-13T14:38:51.195Z</lastmod>
+  </url>
+  <url>
+    <loc>https://openscapes.github.io/quarto-website-tutorial/about.html</loc>
+    <lastmod>2023-02-13T14:40:02.470Z</lastmod>
+  </url>
+  <url>
+    <loc>https://openscapes.github.io/quarto-website-tutorial/posts/post-with-code/index.html</loc>
+    <lastmod>2023-02-09T20:27:01.490Z</lastmod>
+  </url>
+  <url>
+    <loc>https://openscapes.github.io/quarto-website-tutorial/posts/welcome/index.html</loc>
+    <lastmod>2023-02-13T14:38:50.702Z</lastmod>
+  </url>
+</urlset>

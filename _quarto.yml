@@ -1,0 +1,50 @@
+project:
+  type: website
+
+website: 
+  page-navigation: true
+  title: "CV & Projets" 
+  site-url: "https://openscapes.github.io/quarto-website-tutorial" 
+  repo-url: https://github.com/openscapes/quarto-website-tutorial 
+  repo-actions: [edit, issue]
+  
+  page-footer:
+    right: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
+    left: "IFREMER embauchez-moi pitié"
+    
+  sidebar:
+    round-logo: true
+    logo: "meduse.png"
+    pinned: true
+    align: center
+    tools: 
+      - icon: globe
+        href: https://openscapes.org
+        text: "Openscapes.org"
+      - icon: github
+        href: https://github.com/openscapes/quarto-website-tutorial
+        text: "Quarto website tutorial"
+      - icon: twitter
+        href: https://twitter.com/openscapes
+        text: "Openscapes Twitter"         
+
+    style: "docked"
+    search: true
+    collapse-level: 1
+    contents:
+      - href: index.qmd
+        text: Welcome
+      - href: about.qmd
+        text: About me 
+
+format:
+  html:
+    theme:
+      light: [simplex, theme.scss] # from https://github.com/sta210-s22/website/blob/main/_quarto.yml
+      dark: [simplex, theme-dark.scss]
+    code-copy: true
+    code-overflow: wrap
+    toc: true
+
+
+editor: visual

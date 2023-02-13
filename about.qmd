@@ -1,0 +1,46 @@
+---
+title: "About me "
+image: ocean.png
+about:
+  template: jolla
+  image-shape: round
+  links:
+    - icon: twitter
+      text: twitter
+      href: https://twitter.com
+    - icon: github
+      text: Github
+      href: https://github.com
+---
+
+## Bio
+
+I am currently a Master student in **Statistics, Econometrics** at the IAE of Nantes. My interest in **environmental** **data** in general and **marine** **data** in particular, led me to specialize in **time series** and **machine learning.** I am passionate about the analysis of large amounts of data and I am convinced that the use of statistical methods and machine learning can help solve current environmental problems. I have the ambition to develop my skills to make a positive impact on our **planet**. I believe that my knowledge of statistics, econometrics, and data analysis will be a valuable asset to the environmental companies and organizations I wish to work for.
+
+## Education
+
+Master in Statistics & Econometrics \| IAE of Nantes \| 2022-2024
+
+Degree in economics \| University of Brest (U.B.O) \| 2019-2022
+
+## Experience
+
+Internship at **ARKEA** \| Interviews with front office employees and creation of tutorials of their Murex transaction entries, aimed at helping MOA employees understand \| 2022
+
+## Technical Skills
+
+Python
+
+R
+
+Quarto
+
+R-Shiny
+
+SQL
+
+SAS
+
+STATA
+
+VBA

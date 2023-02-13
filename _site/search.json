@@ -1,0 +1,65 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Noa Le Roux",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\nFeb 9, 2023\n\n\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nÉconométrie Linéaire Avancé\n\n\n\nClusters\n\n\n\n\n\n\n\nFeb 6, 2023\n\n\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Économétrie Linéaire Avancé",
+    "section": "",
+    "text": "Environment Clusters\n\n\n\n\n\n\n\n\n\nAnimal Clusters\n\n\n\n\n\n\n\n\n\nHealth Clusters"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About me",
+    "section": "",
+    "text": "I am currently a Master student in Statistics, Econometrics at the IAE of Nantes. My interest in environmental data in general and marine data in particular, led me to specialize in time series and machine learning. I am passionate about the analysis of large amounts of data and I am convinced that the use of statistical methods and machine learning can help solve current environmental problems. I have the ambition to develop my skills to make a positive impact on our planet. I believe that my knowledge of statistics, econometrics, and data analysis will be a valuable asset to the environmental companies and organizations I wish to work for."
+  },
+  {
+    "objectID": "index.html#what-is-quarto",
+    "href": "index.html#what-is-quarto",
+    "title": "LE ROUX Noa",
+    "section": "What is Quarto?",
+    "text": "What is Quarto?\nQuarto helps you have your ideas and your code in one place, and present it in a beautiful way.\n**Quarto unifies and extends the RMarkdown ecosystem** - it unifies by combining the functionality of R Markdown, bookdown, distill, xaringian, etc into a single consistent system. And it extends in several ways: all features are possible beyond R too, including Python and Javascript. It also has more “guardrails”: accessibility and inclusion are centered in the design. Quarto is for people who love RMarkdown, and it’s for people who have never used RMarkdown.\nThe ability for Quarto to streamline collaboration has been so cool and important for our [NASA Openscapes](https://nasa-openscapes.github.io/) project. Quarto has been a common place for us to collaborate - across R and Python languages and coding expertise."
+  },
+  {
+    "objectID": "index.html#what-is-this-blog-about",
+    "href": "index.html#what-is-this-blog-about",
+    "title": "Noa LRX",
+    "section": "What is this blog about ?",
+    "text": "What is this blog about ?\nThis blog serves as a resume/portfolio. I will share here all my projects and studies in statistics to show my skills and knowledge. The graphs and analyses I present are made using tools such as Quarto and Shiny, which allow interactive and intuitive data visualization. I believe that these tools add an extra dimension to understanding and interpreting data, and I am happy to use them to present my work in a clear and engaging way. I hope this blog will give you an insight into my skills and experience in statistics and data analysis."
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "About me",
+    "section": "Education",
+    "text": "Education\nMaster in Statistics & Econometrics | IAE of Nantes | 2022-2024\nDegree in economics | University of Brest (U.B.O) | 2019-2022"
+  },
+  {
+    "objectID": "about.html#experience",
+    "href": "about.html#experience",
+    "title": "About me",
+    "section": "Experience",
+    "text": "Experience\nInternship at ARKEA | Interviews with front office employees and creation of tutorials of their Murex transaction entries, aimed at helping MOA employees understand | 2022"
+  },
+  {
+    "objectID": "about.html#technical-skills",
+    "href": "about.html#technical-skills",
+    "title": "About me",
+    "section": "Technical Skills",
+    "text": "Technical Skills\nPython\nR\nQuarto\nR-Shiny\nSQL\nSAS\nSTATA\nVBA"
+  }
+]

@@ -1,0 +1,30 @@
+---
+title: "Noa Le Roux"
+subtitle: "Student in Master of Statistics & Econometrics"
+image: ocean.png
+listing:
+  contents: posts
+  sort: "date desc"
+  type: grid
+  categories: false
+  sort-ui: true
+  filter-ui: true
+  fields: [image, date, title, Author, description, categories]
+  feed: true
+
+about:
+  template: jolla
+  image-shape: round
+  links:
+    - icon: twitter
+      text: twitter
+      href: https://twitter.com
+    - icon: github
+      text: Github
+      href: https://github.com
+page-layout: full
+---
+
+## **What is this blog about ?**
+
+This blog serves as a **resume**/**portfolio**. I will share here all my projects and studies in statistics to show my skills and knowledge. The graphs and analyses I present are made using tools such as **Quarto** and **Shiny**, which allow **interactive and intuitive data visualization.** I believe that these tools add an extra dimension to understanding and interpreting data, and I am happy to use them to present my work in a clear and engaging way. I hope this blog will give you an insight into my skills and experience in statistics and data analysis.
