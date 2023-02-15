@@ -15,34 +15,7 @@
 <link>https://openscapes.github.io/quarto-website-tutorial/index.html</link>
 </image>
 <generator>quarto-1.1.189</generator>
-<lastBuildDate>Wed, 08 Feb 2023 23:00:00 GMT</lastBuildDate>
-<item>
-  <title>Post With Code</title>
-  <dc:creator>Harlow Malloc</dc:creator>
-  <link>https://openscapes.github.io/quarto-website-tutorial/posts/post-with-code/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>This is a post with executable code.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="dv" style="color: #AD0000;">1</span> <span class="sc" style="color: #5E5E5E;">+</span> <span class="dv" style="color: #AD0000;">1</span></span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
-
-
-
- ]]></description>
-  <category>news</category>
-  <category>code</category>
-  <category>analysis</category>
-  <guid>https://openscapes.github.io/quarto-website-tutorial/posts/post-with-code/index.html</guid>
-  <pubDate>Wed, 08 Feb 2023 23:00:00 GMT</pubDate>
-  <media:content url="https://openscapes.github.io/quarto-website-tutorial/posts/post-with-code/image.jpg" medium="image" type="image/jpeg"/>
-</item>
+<lastBuildDate>Sun, 05 Feb 2023 23:00:00 GMT</lastBuildDate>
 <item>
   <title>Économétrie Linéaire Avancé</title>
   <dc:creator>Le Roux Noa</dc:creator>
@@ -52,47 +25,50 @@
 
 
 
-<p>A survey of meat consumption among college students (Clustering)</p>
-<div class="cell quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://openscapes.github.io/quarto-website-tutorial/posts/welcome/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Environment Clusters</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://openscapes.github.io/quarto-website-tutorial/posts/welcome/index_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Animal Clusters</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://openscapes.github.io/quarto-website-tutorial/posts/welcome/index_files/figure-html/unnamed-chunk-5-3.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Health Clusters</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
+<p>Je modifierai plus tard</p>
 
 
 
  ]]></description>
-  <category>Clusters</category>
   <guid>https://openscapes.github.io/quarto-website-tutorial/posts/welcome/index.html</guid>
   <pubDate>Sun, 05 Feb 2023 23:00:00 GMT</pubDate>
   <media:content url="https://openscapes.github.io/quarto-website-tutorial/posts/welcome/clustering.png" medium="image" type="image/png" height="83" width="144"/>
+</item>
+<item>
+  <title>Post With Code</title>
+  <dc:creator>LE ROUX Noa</dc:creator>
+  <link>https://openscapes.github.io/quarto-website-tutorial/posts/post-with-code/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>This is a post with executable code.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(quarto)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;">library</span>(targets)</span></code></pre></div>
+</div>
+<section id="librairie-heron" class="level2">
+<h2 class="anchored" data-anchor-id="librairie-heron">Librairie heron</h2>
+<p>Le package heron comprend la fonction heron ainsi que la fonction demi-perimetre avec :</p>
+<ul>
+<li><p><u><strong>heron</strong></u>: permet de calculer <em>(via la formule de heron)</em> l’aire d’un triangle à partir de la longueur de ses 3 côtés <em>(a,b,c)</em></p></li>
+<li><p><u><strong>demi-perimetre:</strong></u> permet de calculer le demi-perimetre du triangle à partir de la longueur de ses 3 côtés <em>(a,b,c)</em></p></li>
+</ul>
+<p><u>Comment installer le package via “<em>remotes</em>” ?</u></p>
+<p>Installer le package:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;">library</span>(remotes)</span>
+<span id="cb2-2"><span class="fu" style="color: #4758AB;">install_github</span>(<span class="st" style="color: #20794D;">"NoaLRX/heron"</span>)</span>
+<span id="cb2-3"><span class="fu" style="color: #4758AB;">library</span>(heron)</span></code></pre></div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://openscapes.github.io/quarto-website-tutorial/posts/post-with-code/index.html</guid>
+  <pubDate>Tue, 14 Feb 2023 12:50:56 GMT</pubDate>
 </item>
 </channel>
 </rss>

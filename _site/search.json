@@ -4,21 +4,21 @@
     "href": "index.html",
     "title": "Noa Le Roux",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\nFeb 9, 2023\n\n\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nÉconométrie Linéaire Avancé\n\n\n\nClusters\n\n\n\n\n\n\n\nFeb 6, 2023\n\n\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n \n\n\n\nPost With Code\n\n\n\n\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nÉconométrie Linéaire Avancé\n\n\n\n\n\n\nFeb 6, 2023\n\n\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/post-with-code/index.html",
     "href": "posts/post-with-code/index.html",
     "title": "Post With Code",
     "section": "",
-    "text": "1 + 1\n\n[1] 2"
+    "text": "This is a post with executable code."
   },
   {
     "objectID": "posts/welcome/index.html",
     "href": "posts/welcome/index.html",
     "title": "Économétrie Linéaire Avancé",
     "section": "",
-    "text": "Environment Clusters\n\n\n\n\n\n\n\n\n\nAnimal Clusters\n\n\n\n\n\n\n\n\n\nHealth Clusters"
+    "text": "Je modifierai plus tard"
   },
   {
     "objectID": "about.html",
@@ -61,5 +61,12 @@
     "title": "About me",
     "section": "Technical Skills",
     "text": "Technical Skills\nPython\nR\nQuarto\nR-Shiny\nSQL\nSAS\nSTATA\nVBA"
+  },
+  {
+    "objectID": "posts/post-with-code/index.html#librairie-heron",
+    "href": "posts/post-with-code/index.html#librairie-heron",
+    "title": "Post With Code",
+    "section": "Librairie heron",
+    "text": "Librairie heron\nLe package heron comprend la fonction heron ainsi que la fonction demi-perimetre avec :\n\nheron: permet de calculer (via la formule de heron) l’aire d’un triangle à partir de la longueur de ses 3 côtés (a,b,c)\ndemi-perimetre: permet de calculer le demi-perimetre du triangle à partir de la longueur de ses 3 côtés (a,b,c)\n\nComment installer le package via “remotes” ?\nInstaller le package:\n\nlibrary(remotes)\ninstall_github(\"NoaLRX/heron\")\nlibrary(heron)"
   }
 ]

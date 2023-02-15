@@ -1,13 +1,32 @@
 ---
 title: "Post With Code"
-author: "Harlow Malloc"
-date: "2023-02-09"
-categories: [news, code, analysis]
-image: "image.jpg"---
+author: "LE ROUX Noa"
 ---
 
 This is a post with executable code.
 
 ```{r}
-1 + 1
+#| message: false
+#| warning: false
+library(quarto)
+library(targets)
+```
+
+## Librairie heron
+
+Le package heron comprend la fonction heron ainsi que la fonction demi-perimetre avec :
+
+-   [**heron**]{.underline}: permet de calculer *(via la formule de heron)* l'aire d'un triangle à partir de la longueur de ses 3 côtés *(a,b,c)*
+
+-   [**demi-perimetre:**]{.underline} permet de calculer le demi-perimetre du triangle à partir de la longueur de ses 3 côtés *(a,b,c)*
+
+[Comment installer le package via "*remotes*" ?]{.underline}
+
+Installer le package:
+
+```{r}
+#| eval: false
+library(remotes)
+install_github("NoaLRX/heron")
+library(heron)
 ```
