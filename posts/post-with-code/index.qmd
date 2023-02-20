@@ -3,7 +3,10 @@ title: "Post With Code"
 author: "LE ROUX Noa"
 ---
 
-This is a post with executable code.
+```{r}
+#| echo: false
+renv::status()
+```
 
 ```{r}
 #| message: false
