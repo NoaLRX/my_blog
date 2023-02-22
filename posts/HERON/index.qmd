@@ -1,0 +1,124 @@
+---
+title: "Heron Package"
+description: "Le package heron permet de claculer l'aire d'un triangle en prenant comme argument ses 3 longueurs."
+author: "LE ROUX Noa"
+date: "2023-20-02"
+image: "heron.png"
+---
+
+```{r}
+#| echo: false
+#| include: false
+#| message: false
+#| warning: false
+#| error: false
+
+renv::status()
+```
+
+```{r}
+#| message: false
+#| warning: false
+library(quarto)
+library(targets)
+```
+
+[Comment installer le package via "*remotes*" ?]{.underline}
+
+Installer le package:
+
+```{r}
+#| eval: false
+library(remotes)
+install_github("NoaLRX/heron")
+library(heron)
+```
+
+## Package heron
+
+Le package heron comprend la fonction heron ainsi que la fonction demi-perimetre avec :
+
+-   [**heron**]{.underline}: permet de calculer *(via la formule de heron)* l'aire d'un triangle à partir de la longueur de ses 3 côtés *(a,b,c)*
+
+-   [**demi-perimetre:**]{.underline} permet de calculer le demi-perimetre du triangle à partir de la longueur de ses 3 côtés *(a,b,c)*
+
+La formule d'heron est la suivante:
+
+$Aire = \sqrt{p\times(p-a)(p-b)(p-c)}$
+
+avec:
+
+-   $a,b,c$ les côtés du triangle
+
+-   $p$ le demi-périmètre tel que $p\ = \frac{a+b+c}{2}$
+
+## Triangle de Serpiński
+
+Le Triangle de Sierpinski est une forme géométrique qui peut être créée en divisant un triangle en plusieurs petits triangles plus petits. Ensuite, on répète ce processus pour chaque petit triangle créé, encore et encore. Cela crée une sorte de "puzzle" de triangles imbriqués les uns dans les autres. Cette forme peut être utile pour étudier des idées mathématiques et pour créer des images intéressantes. On peut également l'utiliser pour étudier des choses dans la nature comme la croissance des cristaux ou des plantes.
+
+### Exemple
+
+```{r}
+#| echo: true
+#| include: true
+#| message: false
+#| warning: false
+#| error: false
+triangles = matrix(c(0, 0, 1, 0, 0.5, sqrt(3)/2), nrow = 3, ncol = 2)
+```
+
+### Itération 1
+
+```{r}
+#| echo: true
+#| include: true
+#| message: false
+#| warning: false
+#| error: false
+tar_read("plot1")
+```
+
+```{r}
+#| echo: true
+#| include: true
+#| message: false
+#| warning: false
+#| error: false
+tar_read("aire1")
+```
+
+La somme des aires est de 0.25
+
+### Itération 2
+
+```{r}
+#| echo: true
+#| include: true
+#| message: false
+#| warning: false
+#| error: false
+tar_read("plot2")
+```
+
+```{r}
+tar_read("aire2")
+```
+
+La somme des aires est de 0.1875
+
+### Itération 3
+
+```{r}
+#| echo: true
+#| include: true
+#| message: false
+#| warning: false
+#| error: false
+tar_read("plot3")
+```
+
+```{r}
+tar_read("aire3")
+```
+
+La somme des aires est de 0.140625

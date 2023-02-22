@@ -1,16 +1,16 @@
 project:
   type: website
+  output-dir: docs
 
 website: 
   page-navigation: true
   title: "CV & Projets" 
-  site-url: "https://openscapes.github.io/quarto-website-tutorial" 
-  repo-url: https://github.com/openscapes/quarto-website-tutorial 
+  site-url: "https://noalrx.github.io/portfolio/" 
+  repo-url: "https://github.com/NoaLRX/portfolio"
   repo-actions: [edit, issue]
   
   page-footer:
-    right: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
-    left: "IFREMER embauchez-moi pitié"
+    right: "Cette page a été faite avec ❤️ et [Quarto](https://quarto.org/)."
     
   sidebar:
     round-logo: true
@@ -18,32 +18,33 @@ website:
     pinned: true
     align: center
     tools: 
-      - icon: globe
-        href: https://openscapes.org
-        text: "Openscapes.org"
       - icon: github
-        href: https://github.com/openscapes/quarto-website-tutorial
-        text: "Quarto website tutorial"
-      - icon: twitter
-        href: https://twitter.com/openscapes
-        text: "Openscapes Twitter"         
+        href: https://github.com/NoaLRX
+        text: "GitHub"
+      - icon: linkedin
+        href : https://www.linkedin.com/in/noa-le-roux/
+        text: "Linkedin"
 
     style: "docked"
     search: true
     collapse-level: 1
     contents:
       - href: index.qmd
-        text: Welcome
+        text: Mes projets
       - href: about.qmd
-        text: About me 
+        text: Qui suis-je ?
 
 format:
   html:
     theme:
-      light: [simplex, theme.scss] # from https://github.com/sta210-s22/website/blob/main/_quarto.yml
+      light: [simplex, theme.scss]
       dark: [simplex, theme-dark.scss]
     code-copy: true
     code-overflow: wrap
     toc: true
+    toc-location: right
+
+toc: true
+toc-location: right
 
 editor: visual

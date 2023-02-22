@@ -1,3 +1,0 @@
-main:
-  script: posts/post-with-code/_targets.R
-  store: posts/post-with-code/_targets

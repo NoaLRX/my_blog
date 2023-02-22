@@ -1,7 +1,0 @@
----
-title: "Économétrie Linéaire Avancé"
-author: "Le Roux Noa"
-date: "2023-02-06"
-image: "clustering.png"
----
-Je modifierai plus tard

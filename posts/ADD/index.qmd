@@ -1,0 +1,504 @@
+---
+title: "Analyse de données & descriptive"
+description: "Les déterminants du bonheur: une analyse en composante principale"
+author:   
+  - Noa Le Roux
+  - Gabriel Ammour
+date: "2022-02-11"
+image: "ocean.png"
+code-fold: true
+---
+
+# **Les déterminants du bonheur: une analyse en composante principale (ACP)**
+
+<br/>
+
+**Ceci n'est qu'un aperçu de l'étude réalisée, vous pouvez trouver l'étude complète dans son format pdf [ici](https://drive.google.com/file/d/1a-f_vMh48H6dRPzxCOkBA042ksNSdyB9/view?usp=sharing). *(lien Google Drive)***
+
+<br/>
+
+[*Note:*]{.underline} *La plupart du code est caché afin que cela ne prenne pas trop de place sur la page. Si vous souhaitez avoir accès au script R complet, n'hésitez pas à me contacter.*
+
+<br/>
+
+<br/>
+
+## **Résumé**
+
+L'objectif de l'étude est d'essayer de déterminer les différents facteurs influençant le niveau de bonheur d'un pays. A l'aide de l'Analyse en composantes principales (ACP), nous avons essayé de synthétiser dix variables explicatives en deux grandes variables latentes. Nous sommes arrivés au résultat que le niveau de développement économique et social ainsi que le niveau de libertés individuelles et collectives étaient les deux meilleures composantes pour expliquer le niveau de bonheur d'un pays. Dans un second temps, nous nous sommes aidés de méthodes économétriques - Régression Linéaire Multiple et Régression Logistique Binaire - afin d'évaluer la qualité et l'efficacité de notre modèle.
+
+```{r}
+#| echo: false
+#| include: false
+#| message: false
+#| warning: false
+#| error: false
+library(readxl)
+library(tidyverse)
+library(dplyr)
+library(readxl)
+library(WriteXLS)
+library(FactoMineR)
+library(factoextra)
+library(ggplot2)
+library(ggpubr)
+library(ggcorrplot)
+library(gridExtra)
+library(cowplot)
+library(corrplot)
+library(outliers)
+library(EnvStats)
+library(tseries)
+library(ggpubr)
+library(stats)
+library(lmtest)
+library(lattice)
+library(leaps) 
+library(ggrepel)
+```
+
+```{r}
+#| echo: false
+#| include: false
+#| message: false
+#| warning: false
+#| error: false
+
+#MODELE INITIAL----
+base = read_xlsx("/Users/noa/Desktop/M1/S1/ADD/BDD_definitive2_ACP.xlsx")
+base2 = na.omit(base)
+dim(base2)
+
+
+base3 = select(base2, -c(gini,
+                         cho,
+                         total_taxes,
+                         inflation,
+                         human_right))
+
+res.pca = PCA(base2[3:17], axes=c(1,2))
+fviz_pca_var(res.pca, col.var="cos2")
+```
+
+## **Corrélations entre les variables explicatives**
+
+```{r}
+#| echo: true
+#| include: true
+#| message: false
+#| warning: false
+#| error: false
+#| layout-ncol: 3
+#| layout-nrow: 4
+#| layout-align: center
+
+#CORRELATION ENTRE LIBERTE DE LA PRESSE ET Y----
+ggplot(base3, aes(press,happiness,color=happiness))+
+  geom_point(size=2,alpha=0.95)+
+  stat_cor(method="spearman",aes(label = ..r.label..))+
+  geom_smooth(method=lm, alpha=0.3,color="black",aes(fill=happiness))+
+  ggtitle("Corrélation entre le niveau de bonheur et de liberté de la presse")+
+  theme(plot.title = element_text(hjust = 0.5, face="bold"))+
+  xlab("Niveau de liberté de la presse")+
+  ylab("Niveau de bonheur")
+
+#CORRELATION ENTRE LIBERTE D'EXPRESSION ET Y----
+ggplot(base3, aes(liberte_expression,happiness,color=happiness))+
+  geom_point(size=2,alpha=0.95)+
+  stat_cor(method="spearman",aes(label = ..r.label..))+
+  geom_smooth(method=lm, alpha=0.3,color="black",aes(fill=happiness))+
+  ggtitle("Corrélation entre le niveau de bonheur et de liberté d'expression")+
+  theme(plot.title = element_text(hjust = 0.5, face="bold"))+
+  xlab("Niveau de liberté d'expression")+
+  ylab("Niveau de bonheur")
+
+#CORRELATION ENTRE LIBERTE D'ASSOCIATION ET Y----
+ggplot(base3, aes(liberte_association,happiness,color=happiness))+
+  geom_point(size=2,alpha=0.95)+
+  stat_cor(method="spearman",aes(label = ..r.label..))+
+  geom_smooth(method=lm, alpha=0.3,color="black",aes(fill=happiness))+
+  ggtitle("Corrélation entre le niveau de bonheur et de liberté d'association")+
+  theme(plot.title = element_text(hjust = 0.5, face="bold"))+
+  xlab("Niveau de liberté d'association")+
+  ylab("Niveau de bonheur")
+
+#CORRELATION ENTRE ESPERANCE DE VIE ET Y----
+ggplot(base3, aes(edv,happiness,color=happiness))+
+  geom_point(size=2,alpha=0.95)+
+  stat_cor(method="spearman",aes(label = ..r.label..))+
+  geom_smooth(method=lm, alpha=0.3,color="black",aes(fill=happiness))+
+  ggtitle("Corrélation entre le niveau de bonheur l'espérance de vie")+
+  theme(plot.title = element_text(hjust = 0.5, face="bold"))+
+  xlab("Niveau de l'espérance de vie")+
+  ylab("Niveau de bonheur")
+
+#CORRELATION ENTRE PIB/HAB ET Y----
+ggplot(base3, aes(gdp_capita,happiness,color=happiness))+
+  geom_point(size=2,alpha=0.95)+
+  stat_cor(method="spearman",aes(label = ..r.label..))+
+  geom_smooth(method=lm, alpha=0.3,color="black",aes(fill=happiness))+
+  ggtitle("Corrélation entre le niveau de bonheur et le PIB/Habitant")+
+  theme(plot.title = element_text(hjust = 0.5, face="bold"))+
+  xlab("Niveau du PIB/Habitant")+
+  ylab("Niveau de bonheur")
+
+#CORRELATION ENTRE accès à l'électricité ET Y----
+ggplot(base3, aes(elec_access,happiness,color=happiness))+
+  geom_point(size=2,alpha=0.95)+
+  stat_cor(method="spearman",aes(label = ..r.label..))+
+  geom_smooth(method=lm, alpha=0.3,color="black",aes(fill=happiness))+
+  ggtitle("Corrélation entre le niveau de bonheur et le Niveau d'accès à l'électricité")+
+  theme(plot.title = element_text(hjust = 0.5, face="bold"))+
+  xlab("Niveau d'accès à l'électricité")+
+  ylab("Niveau de bonheur")
+
+#CORRELATION ENTRE school years ET Y----
+ggplot(base3, aes(school_years,happiness,color=happiness))+
+  geom_point(size=2,alpha=0.95)+
+  stat_cor(method="spearman",aes(label = ..r.label..))+
+  geom_smooth(method=lm, alpha=0.3,color="black",aes(fill=happiness))+
+  ggtitle("Corrélation entre le niveau de bonheur et le nombre d'années d'étude moyen")+
+  theme(plot.title = element_text(hjust = 0.5, face="bold"))+
+  xlab("nombre d'années d'étude moyen")+
+  ylab("Niveau de bonheur")
+
+#CORRELATION ENTRE mortalité infantile ET Y----
+ggplot(base3, aes(infant_mort,happiness,color=happiness))+
+  geom_point(size=2,alpha=0.95)+
+  stat_cor(method="spearman",aes(label = ..r.label..))+
+  geom_smooth(method=lm, alpha=0.3,color="black",aes(fill=happiness))+
+  ggtitle("Corrélation entre le niveau de bonheur et la 
+          Part des nouveau-nés qui meurent avant d'avoir atteint l'âge de cinq ans.")+
+  theme(plot.title = element_text(hjust = 0.5, face="bold"))+
+  xlab("part des nouveau-nés qui meurent avant d'avoir atteint l'âge de cinq ans.")+
+  ylab("Niveau de bonheur")
+
+#CORRELATION ENTRE accès à l'eau ET Y----
+ggplot(base3, aes(not_water,happiness,color=happiness))+
+  geom_point(size=2,alpha=0.95)+
+  stat_cor(method="spearman",aes(label = ..r.label..))+
+  geom_smooth(method=lm, alpha=0.3,color="black",aes(fill=happiness))+
+  ggtitle("Corrélation entre le niveau de bonheur et la 
+          part de la population n'ayant pas accès à une source d'eau améliorée")+
+  theme(plot.title = element_text(hjust = 0.5, face="bold"))+
+  xlab("Part de la population n'ayant pas accès à une source d'eau améliorée.")+
+  ylab("Niveau de bonheur")
+
+#CORRELATION ENTRE unsafe_sanitation ET Y----
+ggplot(base3, aes(unsafe_sanitation,happiness,color=happiness))+
+  geom_point(size=2,alpha=0.95)+
+  stat_cor(method="spearman",aes(label = ..r.label..))+
+  geom_smooth(method=lm, alpha=0.3,color="black",aes(fill=happiness))+
+  ggtitle("Corrélation entre le niveau de bonheur et le 
+          taux de mortalité dû à l'insalubrité des installations sanitaires")+
+  theme(plot.title = element_text(hjust = 0.5, face="bold"))+
+  xlab("Taux de mortalité dû à l'insalubrité des installations sanitaires")+
+  ylab("Niveau de bonheur")
+
+```
+
+```{r}
+#| echo: true
+#| include: true
+#| message: false
+#| warning: false
+#| error: false
+#| layout-align: center
+
+#MATRICE DES CORRELATIONS----
+Tableau_Corrélation = round(cor(base3[,c(2:12)],use="complete.obs"),2)
+
+ggcorrplot(Tableau_Corrélation, hc.order = TRUE,lab = TRUE, type = "lower",
+           outline.col = "white",
+           ggtheme = ggplot2::theme_gray,
+           colors = c("#6D9EC1", "white", "#E46726"))+
+            labs(title = "Matrice des corrélations")
+```
+
+## **Boxplots des variables explicatives**
+
+```{r}
+#| echo: true
+#| include: true
+#| message: false
+#| warning: false
+#| error: false
+#| layout-ncol: 5
+#| layout-nrow: 2
+#| layout-align: left
+
+#BOXPLOT----
+#BOXPLOT school_years 
+ggplot(base3, aes(x="",y=school_years))+
+  stat_boxplot(geom = "errorbar",
+               width = 0.15,
+               color = 1)+
+  geom_boxplot(fill = 7,           
+               alpha = 0.75,        
+               color =1,          
+               outlier.colour = 1)+
+  ggtitle("school_years")+
+  theme(plot.title = element_text(hjust = 0.5, face="bold"))
+
+#BOXPLOT edv 
+ggplot(base3, aes(x="",y=edv))+
+  stat_boxplot(geom = "errorbar",
+               width = 0.15,
+               color = 1)+
+  geom_boxplot(fill = 2,           
+               alpha = 0.75,        
+               color = 1,          
+               outlier.colour = 1)+
+  ggtitle("edv")+
+  theme(plot.title = element_text(hjust = 0.5, face="bold"))
+
+
+#BOXPLOT liberte_association 
+ggplot(base3, aes(x="",y=liberte_association))+
+  stat_boxplot(geom = "errorbar",
+               width = 0.15,
+               color = 1)+
+  geom_boxplot(fill = 3,           
+               alpha = 0.75,        
+               color = 1,          
+               outlier.colour = 1)+
+  ggtitle("liberte_association")+
+  theme(plot.title = element_text(hjust = 0.5, face="bold"))
+
+#BOXPLOT elec_access 
+ggplot(base3, aes(x="",y=elec_access))+
+  stat_boxplot(geom = "errorbar",
+               width = 0.15,
+               color = 1)+
+  geom_boxplot(fill = 4,           
+               alpha = 0.75,        
+               color = 1,          
+               outlier.colour = 1)+
+  ggtitle("elec_access")+
+  theme(plot.title = element_text(hjust = 0.5, face="bold"))
+
+#BOXPLOT infant_mort 
+ggplot(base3, aes(x="",y=infant_mort))+
+  stat_boxplot(geom = "errorbar",
+               width = 0.75,
+               color = 1)+
+  geom_boxplot(fill = 5,           
+               alpha = 0.5,        
+               color = 1,          
+               outlier.colour = 1)+
+  ggtitle("infant_mort")+
+  theme(plot.title = element_text(hjust = 0.5, face="bold"))
+
+#BOXPLOT unsafe_sanitation 
+ggplot(base3, aes(x="",y=unsafe_sanitation))+
+  stat_boxplot(geom = "errorbar",
+               width = 0.15,
+               color = 1)+
+  geom_boxplot(fill = 6,           
+               alpha = 0.75,        
+               color = 1,          
+               outlier.colour = 1)+
+  ggtitle("unsafe_sanitation")+
+  theme(plot.title = element_text(hjust = 0.5, face="bold"))
+
+#BOXPLOT gdp_capita 
+ggplot(base3, aes(x="",y=gdp_capita))+
+  stat_boxplot(geom = "errorbar",
+               width = 0.15,
+               color = 1)+
+  geom_boxplot(fill = 7,           
+               alpha = 0.75,        
+               color = 1,          
+               outlier.colour = 1)+
+  ggtitle("gdp_capita")+
+  theme(plot.title = element_text(hjust = 0.5, face="bold"))
+
+#BOXPLOT not_water 
+ggplot(base3, aes(x="",y=not_water))+
+  stat_boxplot(geom = "errorbar",
+               width = 0.15,
+               color = 1)+
+  geom_boxplot(fill = 1,           
+               alpha = 0.75,        
+               color = 1,          
+               outlier.colour = 1)+
+  ggtitle("not_water")+
+  theme(plot.title = element_text(hjust = 0.5, face="bold"))
+
+#BOXPLOT liberte_expression 
+ggplot(base3, aes(x="",y=liberte_expression))+
+  stat_boxplot(geom = "errorbar",
+               width = 0.15,
+               color = 1)+
+  geom_boxplot(fill = 2,           
+               alpha = 0.75,        
+               color = 1,          
+               outlier.colour = 1)+
+  ggtitle("liberte_expression")+
+  theme(plot.title = element_text(hjust = 0.5, face="bold"))
+
+#BOXPLOT press 
+ggplot(base3, aes(x="",y=press))+
+  stat_boxplot(geom = "errorbar",
+               width = 0.15,
+               color = 1)+
+  geom_boxplot(fill = 4,           
+               alpha = 0.75,        
+               color = 1,          
+               outlier.colour = 1)+
+  ggtitle("press")+
+  theme(plot.title = element_text(hjust = 0.5, face="bold"))
+
+#BOXPLOT HAPPY 
+ggplot(base3, aes(x="",y=happiness))+
+  stat_boxplot(geom = "errorbar",
+               width = 0.15,
+               color = 1)+
+  geom_boxplot(fill = 3,           
+               alpha = 0.75,        
+               color = 1,          
+               outlier.colour = 1)+
+  ggtitle("happiness")+
+  theme(plot.title = element_text(hjust = 0.5, face="bold"))
+```
+
+## **Cercle de corrélation: modèle final**
+
+```{r}
+#| echo: false
+#| include: false
+#| message: false
+#| warning: false
+#| error: false
+#CERCLES ACP----
+
+res.pca1 = PCA(base2[3:17], axes=c(1,2))
+fviz_pca_var(res.pca1, col.var="cos2")
+
+#CERCLES ACP AVEC VARIABLE Y
+res.pca0 = PCA(base2[2:17], axes=c(1,2))
+fviz_pca_var(res.pca0, col.var="cos2")
+
+res.pca01 = PCA(base2[2:17], axes=c(1,3))
+fviz_pca_var(res.pca01, col.var="cos2", axes=c(1,3))
+
+#par(mfrow = c(2,1))
+res.pca2 = PCA(base3[3:12], axes=c(1,2))
+res.pca2_2 = PCA(base3[2:12], axes=c(1,2))
+```
+
+```{r}
+#| echo: true
+#| include: true
+#| message: false
+#| warning: false
+#| error: false
+#| layout-ncol: 2
+#| fig-cap: 
+#|   - "Cercle de corrélation: Modèle final"
+#|   - "Cercle de corrélation: Modèle final avec la variable illustrative"
+
+#CERCLE ACP AVEC NOS VARIABLES PERTINENTES -- AXE 1 & 2 
+fviz_pca_var(res.pca2, col.var="cos2")
+
+#CERCLE ACP AVEC NOS VARIABLES PERTINENTES + VAR ILLUS -- AXE 1 & 2 
+fviz_pca_var(res.pca2_2, col.var="cos2")
+```
+
+## **Projection des individus**
+
+```{r}
+#| echo: true
+#| include: true
+#| message: false
+#| warning: false
+#| error: false
+#| fig-cap: 
+#|   - "Projection des individus sur les axes 1 & 2"
+
+#PROJECTION DES INDIVIDUS----
+coord_individus<- round(res.pca2$ind$coord, 2) 
+contrib_individus<- round(res.pca$ind$contrib, 2) 
+cos2_individus <- round(res.pca$ind$cos2, 2)
+
+fviz_pca_ind(res.pca2,
+             col.ind="cos2",
+             gradient.cols=c("#00AFBB", "#E7B800", "#FC4E07"), 
+             repel=TRUE, 
+             title="projection des pays sur l'axe 1 et 2")
+```
+
+## **Test stats sur nos 3 modèles linéaires**
+
+Après avoir établi nos 3 modèles de régressions linéaires multiples, nous appliquons nos différents tests pour sélectionner le meilleur.
+
++--------+-------------+------------------+------------+--------------------+--------------+
+| Modèle | $R^2_{adj}$ | Student          | Shapiro    | Kolmogorov-Smirnov | Breush-Pagan |
++========+=============+==================+============+====================+==============+
+| 1      | 0.61        | $ß_1$ : 2e-16    | 0.08       | 0.67               | 0.13         |
+|        |             |                  |            |                    |              |
+|        |             | $ß_2$ : 0.0266   | Validé     | Validé             | Validé       |
++--------+-------------+------------------+------------+--------------------+--------------+
+| 2      | 0.65        | $ß_1$ : 2e-16    | 0.89       | 0.99               | 0.03         |
+|        |             |                  |            |                    |              |
+|        |             | $ß_2$ : 6.56e-05 | Validé     | Validé             | non-validé   |
++--------+-------------+------------------+------------+--------------------+--------------+
+| 3      | 0.05        | $ß_1$ : 0.16     | 0.01       | 0.78               | 6.35e-06     |
+|        |             |                  |            |                    |              |
+|        |             | $ß_2$ : 0.013    | non-validé | Validé             | non-validé   |
++--------+-------------+------------------+------------+--------------------+--------------+
+
+Au vu des résultats dans notre tableau, nous pouvons conclure que le modèle 1 reste le meilleur, ce dernier présente un $R^2$ ajusté élevé, valide les deux tests de normalité ainsi que le test d'homoscédasticité des résidus.
+
+## **Relation entre la variable illustrative observée et prédite**
+
+```{r}
+#| echo: false
+#| include: false
+#| message: false
+#| warning: false
+#| error: false
+
+Dvlp_economique_et_social = res.pca2$ind$coord[,1]
+Libertes_ind_et_coll = res.pca2$ind$coord[,2]
+reg1 = lm(base3$happiness~ Dvlp_economique_et_social + Libertes_ind_et_coll)
+summary(reg1)
+
+pm=predict(reg1)
+```
+
+```{r}
+#| echo: true
+#| include: true
+#| message: false
+#| warning: false
+#| error: false
+#| fig-width: 10
+#| fig-cap: 
+#|   - "Projection de vos valeurs observées par rapport aux valeurs prédites"
+ggplot(base3, aes(pm,happiness)) +
+  geom_point() +
+  geom_text_repel(aes(label = base3$Pays))+
+  geom_smooth(method='lm', alpha=0,color="blue")
+```
+
+## **Régression logistique binaire**
+
+D'après le RESET test, la forme linéaire de notre modèle n'est pas validé. Nous avons donc décidée de faire une régression logistique binaire:
+
+![](reg_logit.png){fig-align="left"}
+
+Sur l'abscisse de notre graphique, la probabilité qu'un pays est un seuil supérieur à 6.93 en fonction des résultats de notre régression logistique binaire. Sur l'ordre, nous avons le rang de ces pays en fonction de la probabilité. Plus la probabilité qu'un pays ait un seuil de bonheur supérieur à 6.93 est grande, plus son rang est élevé.
+
+De plus, un code couleur nous indique si le pays à effectivement un niveau de bonheur supérieur au seuil ou non. On remarque qu'avec notre estimation, la Belgique, l'Estonie et les Etats-Unis ont une probabilité supérieure à 50% d'avoir un niveau de bonheur supérieur à 6.93 alors qu'en réalité, ces trois pays ont un niveau inférieur à 6.93.\
+A l'inverse, Le Royaume-Uni, le Costa-Rica et la République Tchèque qui ont des probabilités relativement faible (\~25%) d'avoir un niveau de bonheur supérieur à notre seuil se retrouvent avec un niveau de bonheur réel supérieur à 6.93.
+
+## **Conclusion**
+
+Dans ce dossier, nous avons essayé de déterminer les variables expliquant le niveau de bonheur d'un pays. A l'aide de l'analyse en composantes principales, nous avons réussi à transformer dix variables explicatives en deux variables latentes bien distinctes : Le **niveau de développement économique et social** et le **niveau de liberté individuelle et collective.**
+
+A partir de ces deux composantes, nous avons estimé un **modèle de régression linéaire multiple** entre introduisant le bonheur comme variable illustrative. Les résultats de cette régression se sont avérés plutôt concluants puisque d'une part, le modèle s'est avéré être significatif au seuil de 5%, et de l'autre, ses prédictions sont relativement bonnes. 
+
+Enfin, puisque notre modèle n'était pas linéaire, nous avons décidé de compléter notre analyse en effectuant une régression logistique binaire. Cette régression à aboutit à la détermination d'**un seuil de bonheur à 6.93 sur l'échelle de Cantril.**
+
+\

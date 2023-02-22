@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://openscapes.github.io/quarto-website-tutorial/index.html</loc>
-    <lastmod>2023-02-14T12:50:56.883Z</lastmod>
-  </url>
-  <url>
-    <loc>https://openscapes.github.io/quarto-website-tutorial/about.html</loc>
-    <lastmod>2023-02-14T12:50:57.337Z</lastmod>
-  </url>
-  <url>
     <loc>https://openscapes.github.io/quarto-website-tutorial/posts/post-with-code/index.html</loc>
-    <lastmod>2023-02-14T12:50:55.706Z</lastmod>
+    <lastmod>2023-02-16T12:30:20.363Z</lastmod>
   </url>
   <url>
     <loc>https://openscapes.github.io/quarto-website-tutorial/posts/welcome/index.html</loc>
-    <lastmod>2023-02-14T12:50:56.243Z</lastmod>
+    <lastmod>2023-02-16T12:33:48.650Z</lastmod>
+  </url>
+  <url>
+    <loc>https://openscapes.github.io/quarto-website-tutorial/index.html</loc>
+    <lastmod>2023-02-16T12:33:45.355Z</lastmod>
+  </url>
+  <url>
+    <loc>https://openscapes.github.io/quarto-website-tutorial/about.html</loc>
+    <lastmod>2023-02-16T12:30:22.121Z</lastmod>
   </url>
 </urlset>

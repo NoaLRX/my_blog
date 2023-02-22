@@ -71,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-image','listing-date','listing-title','listing-Author','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-image','listing-date','listing-title','listing-subtitle','listing-author','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
       searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
     };
@@ -152,14 +152,14 @@ ul.task-list li input[type="checkbox"] {
  <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title d-none d-lg-block">Noa Le Roux</h1>
-<p class="subtitle lead">Student in Master of Statistics &amp; Econometrics</p>
+<p class="subtitle lead">Étudiant en Master Statistiques, Économétrie</p>
 </div>
 <div class="quarto-title-meta">
   </div>
 </header><main class="content column-page-right" id="quarto-document-content">
-<section id="what-is-this-blog-about" class="level2">
-<h2 data-anchor-id="what-is-this-blog-about"><strong>What is this blog about ?</strong></h2>
-<p>This blog serves as a <strong>resume</strong>/<strong>portfolio</strong>. I will share here all my projects and studies in statistics to show my skills and knowledge. The graphs and analyses I present are made using tools such as <strong>Quarto</strong> and <strong>Shiny</strong>, which allow <strong>interactive and intuitive data visualization.</strong> I believe that these tools add an extra dimension to understanding and interpreting data, and I am happy to use them to present my work in a clear and engaging way. I hope this blog will give you an insight into my skills and experience in statistics and data analysis.</p>
+<section id="bienvenue" class="level2">
+<h2 data-anchor-id="bienvenue">Bienvenue !</h2>
+<p>Ce blog fait office de <strong>CV/portfolio</strong>. Je partagerai ici <strong>certains</strong> de mes projets et études en statistiques pour montrer mes compétences et connaissances. Les graphiques et analyses que je présente sont réalisés à l’aide d’outils tels que <strong>Quarto</strong> et <strong>Shiny</strong>, qui permettent une <strong>visualisation interactive et intuitive des données.</strong> Je pense que ces outils ajoutent une dimension supplémentaire à la compréhension et à l’interprétation des données, et je suis heureux de les utiliser pour présenter mon travail de manière claire et attrayante. J’espère que ce blog vous donnera un aperçu de mes compétences et de mon expérience en matière de statistiques et d’analyse de données.</p>
 
 
 </section>
@@ -179,6 +179,9 @@ ul.task-list li input[type="checkbox"] {
          <option value="listing-date-sort" data-direction="desc">
           Date - Newest
         </option>
+         <option value="listing-author" data-direction="asc">
+          Author
+        </option>
      </select>
   </div>
     <div class="input-group input-group-sm quarto-listing-filter">
@@ -187,59 +190,52 @@ ul.task-list li input[type="checkbox"] {
     </div>
 </div>
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1676310892011" data-listing-reading-time-sort="0.39">
-<a href="./posts/post-with-code/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-img-bg" style="height: 150px;">
-&nbsp;
-</div>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Post With Code
-</h5>
-<div class="card-text listing-description">
-This is a post with executable code.
-</div>
-<table class="card-other-values">
-<tbody><tr>
-<td>
-Author
-</td>
-<td class="Author">
-</td>
-</tr>
-</tbody></table>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-listing-date-sort="1675638000000" data-listing-file-modified-sort="1676308772937" data-listing-reading-time-sort="0.02">
+<div class="g-col-1" data-index="0" data-listing-date-sort="1686434400000" data-listing-file-modified-sort="1676547203697" data-listing-reading-time-sort="11.705">
 <a href="./posts/welcome/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img src="./posts/welcome/clustering.png" class="thumbnail-image card-img" style="height: 150px;">
+<img src="./posts/welcome/ocean.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Économétrie Linéaire Avancé
 </h5>
 <div class="card-text listing-description">
-Je modifierai plus tard
+Enquête sur la consommation de viande chez les étudiants.
 </div>
-<div class="card-attribution card-text-small end">
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Noa Le Roux, Gabriel Ammour, Theo Bouedo
+</div>
 <div class="listing-date">
-Feb 6, 2023
+Jun 11, 2023
 </div>
 </div>
-<table class="card-other-values">
-<tbody><tr>
-<td>
-Author
-</td>
-<td class="Author">
-</td>
-</tr>
-</tbody></table>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="1" data-listing-date-sort="1644534000000" data-listing-file-modified-sort="1676547202348" data-listing-reading-time-sort="18.175">
+<a href="./posts/post-with-code/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./posts/post-with-code/ocean.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Analyse de données &amp; descriptive
+</h5>
+<div class="card-text listing-description">
+Les déterminants du bonheur: une analyse en composante principale
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Noa Le Roux, Gabriel Ammour
+</div>
+<div class="listing-date">
+Feb 11, 2022
+</div>
+</div>
 </div>
 </div>
 </a>

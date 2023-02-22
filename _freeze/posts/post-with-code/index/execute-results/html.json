@@ -1,7 +1,7 @@
 {
-  "hash": "7b7d44736f30ae4b2e628ba0d4f8ed0f",
+  "hash": "ed9320ee6be301cde56f2652c697ca87",
   "result": {
-    "markdown": "---\ntitle: \"Post With Code\"\nauthor: \"LE ROUX Noa\"\n---\n\n\nThis is a post with executable code.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(quarto)\nlibrary(targets)\n```\n:::\n\n\n## Librairie heron\n\nLe package heron comprend la fonction heron ainsi que la fonction demi-perimetre avec :\n\n-   [**heron**]{.underline}: permet de calculer *(via la formule de heron)* l'aire d'un triangle à partir de la longueur de ses 3 côtés *(a,b,c)*\n\n-   [**demi-perimetre:**]{.underline} permet de calculer le demi-perimetre du triangle à partir de la longueur de ses 3 côtés *(a,b,c)*\n\n[Comment installer le package via \"*remotes*\" ?]{.underline}\n\nInstaller le package:\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(remotes)\ninstall_github(\"NoaLRX/heron\")\nlibrary(heron)\n```\n:::\n",
+    "markdown": "---\ntitle: \"Post With Code\"\nauthor: \"LE ROUX Noa\"\n---\n\n::: {.cell}\n\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(quarto)\nlibrary(targets)\n```\n:::\n\n\n## Librairie heron\n\nLe package heron comprend la fonction heron ainsi que la fonction demi-perimetre avec :\n\n-   [**heron**]{.underline}: permet de calculer *(via la formule de heron)* l'aire d'un triangle à partir de la longueur de ses 3 côtés *(a,b,c)*\n\n-   [**demi-perimetre:**]{.underline} permet de calculer le demi-perimetre du triangle à partir de la longueur de ses 3 côtés *(a,b,c)*\n\n[Comment installer le package via \"*remotes*\" ?]{.underline}\n\nInstaller le package:\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(remotes)\ninstall_github(\"NoaLRX/heron\")\nlibrary(heron)\n```\n:::\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"

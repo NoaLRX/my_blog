@@ -1,7 +1,8 @@
 ---
 title: "Noa Le Roux"
-subtitle: "Student in Master of Statistics & Econometrics"
+subtitle: "Étudiant en Master Statistiques, Économétrie"
 image: ocean.png
+toc : true
 listing:
   contents: posts
   sort: "date desc"
@@ -9,22 +10,35 @@ listing:
   categories: false
   sort-ui: true
   filter-ui: true
-  fields: [image, date, title, Author, description, categories]
+  fields: [image, date, title,subtitle, author, description, categories]
   feed: true
 
 about:
   template: jolla
   image-shape: round
   links:
-    - icon: twitter
-      text: twitter
-      href: https://twitter.com
     - icon: github
       text: Github
-      href: https://github.com
+      href: https://github.com/NoaLRX
+    - icon: linkedin
+      text: Linkedin
+      href: https://www.linkedin.com/in/noa-le-roux/
+      
 page-layout: full
 ---
 
-## **What is this blog about ?**
+## Bienvenue !
 
-This blog serves as a **resume**/**portfolio**. I will share here all my projects and studies in statistics to show my skills and knowledge. The graphs and analyses I present are made using tools such as **Quarto** and **Shiny**, which allow **interactive and intuitive data visualization.** I believe that these tools add an extra dimension to understanding and interpreting data, and I am happy to use them to present my work in a clear and engaging way. I hope this blog will give you an insight into my skills and experience in statistics and data analysis.
+Ce blog fait office de **CV/portfolio**. Je partagerai ici **certains** de mes projets et études en statistiques pour montrer mes compétences et connaissances. Les graphiques et analyses que je présente sont réalisés à l'aide d'outils tels que **Quarto** et **Shiny**, qui permettent une **visualisation interactive et intuitive des données.** Je pense que ces outils ajoutent une dimension supplémentaire à la compréhension et à l'interprétation des données, et je suis heureux de les utiliser pour présenter mon travail de manière claire et attrayante. J'espère que ce blog vous donnera un aperçu de mes compétences et de mon expérience en matière de statistiques et d'analyse de données.
+
+<br/>
+
+[Projets bientôt disponibles:]{.underline}
+
+**Séries temporelles univariées:** 03 Mars 2023
+
+**Modélisation avec des variables latentes:** 31 Mars 2023
+
+**Techniques de prévision et conjoncture:** 30 Avril 2023
+
+**Mémoire de fin d'année:** 02 Juin 2023

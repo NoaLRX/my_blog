@@ -1,43 +1,60 @@
 ---
-title: "About me "
+title: "Qui suis-je ?"
 image: ocean.png
 about:
   template: jolla
   image-shape: round
   links:
-    - icon: twitter
-      text: twitter
-      href: https://twitter.com
     - icon: github
       text: Github
-      href: https://github.com
+      href: https://github.com/NoaLRX
+    - icon: linkedin
+      text: Linkedin
+      href: https://www.linkedin.com/in/noa-le-roux/
+toc: true
 ---
 
-## Bio
+## **Bio**
 
-I am currently a Master student in **Statistics, Econometrics** at the IAE of Nantes. My interest in **environmental** **data** in general and **marine** **data** in particular, led me to specialize in **time series** and **machine learning.** I am passionate about the analysis of large amounts of data and I am convinced that the use of statistical methods and machine learning can help solve current environmental problems. I have the ambition to develop my skills to make a positive impact on our **planet**. I believe that my knowledge of statistics, econometrics, and data analysis will be a valuable asset to the environmental companies and organizations I wish to work for.
+Je suis actuellement étudiant en Master de **Statistique**, **Econométrie** à l'IAE de Nantes. Mon intérêt pour les **données** **environnementales** en général et les **données** **marines** en particulier, m'a conduit à me spécialiser dans les **séries temporelles** et le **Machine** **Learning**. Je suis passionné par l'analyse de grandes quantités de données et je suis convaincu que l'utilisation des méthodes statistiques et de l'apprentissage automatique peut aider à résoudre les problèmes environnementaux actuels. J'ai l'ambition de développer mes compétences pour avoir un impact positif sur notre **planète**. Je pense que mes connaissances en matière de statistiques, d'économétrie et d'analyse de données seront un atout précieux pour les entreprises et organisations environnementales pour lesquelles je souhaite travailler.
 
-## Education
+## **Formations**
 
-Master in Statistics & Econometrics \| IAE of Nantes \| 2022-2024
+Master en statistiques et Économétrie \| IAE de Nantes \| 2022-2024
 
-Degree in economics \| University of Brest (U.B.O) \| 2019-2022
+3ème année de Licence d'Économie, semestre ERASMUS \| Université de Sienne, Italie \| 2022-2022
 
-## Experience
+Licence d'Économie - Parcours International \| Université de Brest (U.B.O) \| 2019-2022
 
-Internship at **ARKEA** \| Interviews with front office employees and creation of tutorials of their Murex transaction entries, aimed at helping MOA employees understand \| 2022
+## **Expériences**
 
-## Technical Skills
+[Capitainerie du Moulin Blanc \|Agent Plan d'Eau\| Juin 2022 - Aout 2022]{.underline}
 
-Python
+Accueil sur l'eau des nouveaux plaisanciers au sein du port du Moulin Blanc à brest
 
-R
+Manoeuvres de remorquage pour déplacer les bateaux dans le besoin
 
-Quarto
+[Stage à **ARKEA** \| Partie MOA \| 2022]{.underline}
 
-R-Shiny
+Entretiens avec les membres de la salle des marchés, dans le but de documenter les saisies de leur opérations financières au sein du logiciel Murex. Création de supports documentés, permettant à la partie MOA de mieux comprendre ces opérations
 
-SQL
+[Intermarché \| Vendeur/ Boulanger \| Juin 2020 - Mars 2021]{.underline}
+
+Vendeur / Boulanger au rayon Boulangerie-Pâtisserie à Intermarché Plabennec
+
+## **Compétences**
+
+**Python** *(NumPy, Pandas, Sickit, TensorFlow, Seaborn, Prophet...)*
+
+**R** *(dyplr, purr ,tidyr ,ggplot...)*
+
+**Quarto**
+
+**R-Shiny**
+
+**SQL**
+
+**Git**
 
 SAS
 

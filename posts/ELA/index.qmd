@@ -1,0 +1,361 @@
+---
+title: "Économétrie Linéaire Avancé"
+description: "Enquête sur la consommation de viande chez les étudiants."
+author:   
+  - Noa Le Roux
+  - Gabriel Ammour
+  - Theo Bouedo 
+date: "2022-18-11"
+image: "ocean.png"
+code-fold: true
+---
+
+# **A Survey of meat consumption among college students.**
+
+L'objectif de cette étude était d'évaluer les préoccupations environnementales, les comportements alimentaires et sanitaires ainsi que les préoccupations liées au bien-être animal des étudiants de l'Université de Nantes sur leur consommation de viande.
+
+<br/>
+
+**Ceci n'est qu'un aperçu de l'étude réalisée, vous pouvez trouver l'étude complète dans son format pdf [ici](https://drive.google.com/file/d/1lhesmwZSGXMwDfG8smdej81dOQ49wc_1/view?usp=sharing). *(lien Google Drive)***
+
+Cette étude à été réalisée en anglais, son rendu le sera donc également
+
+<br/>
+
+[*Note:*]{.underline} *Most of the code is hidden to make it look good, so it doesn't take up too much space on the page. If you want to have access to the complete script, don't hesitate to contact me.*
+
+[*Note 2:*]{.underline} *For the visible code, you can press the code button to make it appear.*
+
+<br/>
+
+<br/>
+
+## **Abstract**
+
+The purpose of this study was to appraise the environmental concerns, dietary health behaviors as well as animal welfare concerns of Nantes Université students on their meat consumption. Using a questionnaire, we were able to collect information on their socio-economic environment, their consumption habits and their knowledge regarding meat industry externalities. After analyzing students' responses, we used the multiple component analysis as well as the cluster technique to group students according to their responses on each of the three themes mentioned above. We were able to identify three clusters gathering three types of individuals : the committed, the aware and the skeptical. Then, we used econometric methods - Ordinary Least Squares - to quantify the links between our clusters and MC. In accordance with the previous work, our results showed that being female, having vegetarian parents and not living alone had a negative impact on meat consumption. However, our study also showed that both health and environmental considerations were more important than animal considerations in shaping meat consumption.
+
+```{r}
+#| echo: false
+#| include: false
+#| message: false
+#| warning: false
+#| error: false
+
+library(plyr)
+library(dplyr)
+library(readxl)
+library(tidyverse)
+library(ade4)
+library(FactoMineR)
+library(explor)
+library(cluster)
+library(ggplot2)
+library(dendextend)
+library(WeightedCluster)
+library(wesanderson)
+library(factoextra)
+library(questionr)
+library(NbClust)
+library(cowplot)
+#library(JLutils)
+library(lmtest)
+#library(caret)
+library(EnvStats)
+```
+
+```{r}
+#| echo: false
+#| include: false
+#| message: false
+#| warning: false
+#| error: false
+
+base <- read.csv2("/Users/noa/Desktop/M1/S1/ELA/BDD_ELA.csv")
+
+cols <- c("genre","type_viande","red_conso","pq_conso","sport","e1","e2","e2_bis","e3","e3","e4","e5",
+          "a1","a2","a3","a4","s1","s2","s3","s4","s5", "etude","niveau_etude","boursier","boursier_2",
+          "csp1","csp2","envt_enfance","animaux_enfance","parents_vege", "amis_vege","habitat","regime",
+          "imc_bis","age_bis","csp1_plus","csp2_plus")
+base %>%
+  mutate_each_(funs(factor(.)),cols)
+```
+
+```{r}
+#| echo: false
+#| include: false
+#| message: false
+#| warning: false
+#| error: false
+
+acme <-  base %>%select(e1,e2,e2_bis,e3,e4,e5) %>%MCA()
+```
+
+```{r}
+#| echo: false
+#| include: false
+#| message: false
+#| warning: false
+#| error: false
+res <- explor::prepare_results(acme)
+```
+
+From this database, we performed an **MCA** as well as **Clusters**. Each of the **MCAs** / **Clusters** have been divided into **3 categories:**
+
+-   **environment**-related responses: to what extent the student takes (or not) into account the environment in his meat consumption
+
+-   **health**-related responses: to what extent the student takes (or not) health into account in his or her meat consumption
+
+-   **animal** welfare responses: how much the student does (or does not) consider animal welfare in their meat consumption
+
+<br/>
+
+<br/>
+
+## **MCA on Environment**
+
+```{r}
+MCA_var_plot(res, xax = 1, yax = 2, var_sup = FALSE, var_sup_choice = ,
+             var_lab_min_contrib = 0, col_var = "Variable", symbol_var = NULL, size_var = "Contrib",
+             size_range = c(64.6875, 862.5), labels_size = 14, point_size = 69, transitions = TRUE,
+             labels_positions = "auto", labels_prepend_var = FALSE, xlim = c(-1.43, 2.46),
+             ylim = c(-1.67, 2.22))
+
+```
+
+<br/>
+
+<br/>
+
+```{r}
+#| echo: false
+#| include: false
+#| message: false
+#| warning: false
+#| error: false
+acma <- base %>%
+  select(a1, a2, a3, a4) %>%
+  MCA()
+
+res2 = explor::prepare_results(acma)
+```
+
+## **MCA on Animal-Welfare**
+
+```{r}
+MCA_var_plot(res2, xax = 1, yax = 2, var_sup = FALSE, var_sup_choice = ,
+             var_lab_min_contrib = 0, col_var = "Variable", symbol_var = NULL, size_var = "Contrib",
+             size_range = c(64.6875, 862.5), labels_size = 14, point_size = 69, transitions = TRUE,
+             labels_positions = "auto", labels_prepend_var = FALSE, xlim = c(-1.43, 2.46),
+             ylim = c(-1.67, 2.22))
+```
+
+<br/>
+
+<br/>
+
+```{r}
+#| echo: false
+#| include: false
+#| message: false
+#| warning: false
+#| error: false
+acms <- base %>%
+  select(s1,s3,s4,s5) %>%
+  MCA()
+
+res3 <- explor::prepare_results(acms)
+```
+
+## **MCA on Health**
+
+```{r}
+MCA_var_plot(res3, xax = 1, yax = 2, var_sup = FALSE, var_sup_choice = ,
+             var_lab_min_contrib = 0, col_var = "Variable", symbol_var = NULL, size_var = "Contrib",
+             size_range = c(64.6875, 862.5), labels_size = 14, point_size = 69, transitions = TRUE,
+             labels_positions = "auto", labels_prepend_var = FALSE, xlim = c(-1.43, 2.46),
+             ylim = c(-1.67, 2.22))
+```
+```{r}
+#| echo: false
+#| include: false
+#| message: false
+#| warning: false
+#| error: false
+base[, 10:24] <- lapply(base[, 10:24], factor)
+
+```
+
+```{r}
+#| echo: false
+#| include: false
+#| message: false
+#| warning: false
+#| error: false
+
+
+
+#ACM ANIMAL----
+acma <- base %>%
+  select(a1, a2, a3, a4) %>%
+  MCA()
+
+#explor::explor(acma)
+
+#ACM SANTE----
+acms <- base %>%
+  select(s1,s3,s4,s5) %>%
+  MCA()
+
+#explor::explor(acms)
+
+# Graphiques des valeurs propres----
+peige<- fviz_eig(acme, addlabels=TRUE, main="", ylab = "Variances explained (%)",
+                 barfill="palegreen4",barcolor="grey35",linecolor="black",ncp=5)+theme_classic()
+
+peiga<- fviz_eig(acma, addlabels=TRUE, main="",ylab = "Variances explained (%)",
+                 barfill="burlywood3",barcolor = "grey35",linecolor = "black",ncp=5) + theme_classic()
+
+peigs<- fviz_eig(acms, addlabels=TRUE, main="",ylab = "Variances explained (%)",
+                 barfill="royalblue3",barcolor = "grey35",linecolor = "black",ncp=5) + theme_classic()
+
+plot_grid(peige,peiga,peigs, labels = c('Environment', 'Animal', 'Health'),ncol=3)
+
+#Clustering----
+
+
+
+#ENVIRONMENT
+ade_e <- base %>%
+  select(e1,e2,e2_bis,e3,e4,e5) %>%
+  dudi.acm(scannf = FALSE) %>%
+  dist.dudi() %>%
+  hclust(method = "ward.D2")
+
+#ANIMAL
+ade_a <- base %>%
+  select(a1,a2,a3,a4) %>%
+  dudi.acm(scannf = FALSE) %>%
+  dist.dudi() %>%
+  hclust(method = "ward.D2")
+
+#SANTE
+ade_s <- base %>%
+  select(s1,s2,s3,s4,s5) %>%
+  dudi.acm(scannf = FALSE) %>%
+  dist.dudi() %>%
+  hclust(method = "ward.D2")
+
+#CLUSTERS----
+#CHOIX NOMBRE CLUSTER
+cahe <- HCPC(acme, graph = FALSE, nb.clust = 3)
+caha <- HCPC(acma, graph = FALSE, nb.clust = 3)
+cahs <- HCPC(acms, graph = FALSE, nb.clust = 3)
+```
+
+<br/>
+
+<br/>
+
+## Cluster on environment
+
+```{r}
+#| echo: true
+#| include: true
+#| message: false
+#| warning: false
+#| error: false
+#| fig-cap: Cluster relating to questions on the theme of the environment
+#| fig-subcap: Inertia axis 1 & 2 
+#| fig-align: left
+clust_env_1_2<- fviz_cluster(cahe,repel = TRUE,show.clust.cent = TRUE,
+                         axes = c(1, 2),ylab=TRUE,
+                         palette = "Tableau",ggtheme = theme_minimal(),
+                         main =  "Environment")+ theme(legend.position = "none")
+clust_env_1_2
+```
+
+<br/>
+
+## Cluster on animal-welfare
+
+```{r}
+#| echo: true
+#| include: true
+#| message: false
+#| warning: false
+#| error: false
+#| fig-cap: Cluster relating to questions on the theme of the animals-welfare
+#| fig-subcap: Inertia axis 1 & 2 
+#| fig-align: left
+
+clust_animal_1_2<- fviz_cluster(caha,repel = TRUE,show.clust.cent = TRUE,
+                         axes = c(1, 2),
+                         palette = "Tableau",ggtheme = theme_minimal(),
+                         main = "Animal")+ theme(legend.position = "none")
+clust_animal_1_2
+```
+
+<br/>
+
+## Cluster on health
+
+```{r}
+#| echo: true
+#| include: true
+#| message: false
+#| warning: false
+#| error: false
+#| fig-cap: Cluster relating to questions on the theme of health
+#| fig-subcap: Inertia axis 1 & 2 
+#| fig-align: left
+
+clust_sante_1_2<- fviz_cluster(cahs,repel = TRUE,show.clust.cent = TRUE,
+                         axes = c(1, 2),
+                         palette = "Tableau",ggtheme = theme_minimal(),
+                         main = "Health")+ theme(legend.position = "none")
+clust_sante_1_2
+```
+
+<br/>
+
+<br/>
+
+In each theme (environment, health, and animal welfare), we have created 3 categories of people:
+
+-   Committed
+
+-   Aware
+
+-   Skeptical
+
+<br/>
+
+<br/>
+
+## Statistics on Clusters
+
+|                                       | Inactive | Occasional | Regular | Dependent |
+|---------------|---------------|---------------|---------------|---------------|
+| Headcount                             | 8        | 36         | 37      | 11        |
+| **Environment concerns: (EC)**        |          |            |         |           |
+| *Committed*                           | **63%**  | 25%        | 22%     | 9%        |
+| *Aware*                               | 37%      | **64%**    | **57%** | **73%**   |
+| *Skeptical*                           | 0%       | 11%        | 22%     | 18%       |
+| **Food & Health behaviors (DHB)**     |          |            |         |           |
+| *Committed*                           | **63%**  | 25%        | 22%     | 0%        |
+| *Aware*                               | 37%      | **58%**    | 35%     | 18%       |
+| *Skeptical*                           | 0%       | 17%        | **43%** | **82%**   |
+| **Animal welfare concerns** **(AWC)** |          |            |         |           |
+| *Committed*                           | **38%**  | 25%        | 11%     | 18%       |
+| *Aware*                               | **38%**  | **64%**    | **62%** | **55%**   |
+| *Skeptical*                           | 25%      | 11%        | 27%     | 27%       |
+
+<br/>
+
+Globally, we observe that non-meat eaters are mostly engaged in EC and DHB. As a matter of fact, 63% of inactive consumers are committed to both EC and DHB when only 38% of them are committed and 25% skeptical to AWC. We can make the assumption that these people do not eat meat **mainly because of health and environmental concerns.** At the other end, we observe that 73% of dependent consumers are aware of the environmental externalities of MC. This may indicate some form of myopia for these students regarding MCs. Indeed, it is possible that **these students feel concerned about the environmental cause but not enough to be aware of MC's (Meat Consumption) externalities.** As for DBH, 82% of them are skeptical which means that in our sample, people who eat the most meat tend to pay less attention to their health. Finally, for AWC, we note that all types of consumers are mostly aware of animal concerns regarding MC.
+
+<br/>
+
+<br/>
+
+This is only an overview of the study done, you can find the complete study in its pdf format [here](https://drive.google.com/file/d/1lhesmwZSGXMwDfG8smdej81dOQ49wc_1/view?usp=sharing). *(it's Google Drive Link)*\
